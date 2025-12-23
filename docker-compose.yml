@@ -1,0 +1,12 @@
+services:
+  web:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./web:/app
+      - /app/node_modules
+    ports:
+      - "4200:4200"
+    command: sh -lc "npm install && npm start -- --host 0.0.0.0"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
